@@ -39,11 +39,11 @@ Once you run, for example:
 
 `pipenv run python -m bm_core_piler --synth --mem 100 --prog --file programs/PROGAM_FILES/prog_1_pow_net.cminus` 
 
-or
+for synthesizing a program, or:
 
 `pipenv run python -m bm_core_piler --synth --file programs/SYSTEM_CODE/BM32OS.cminus` 
 
-to finish translating the generated assembly to it's respective binary values, run:
+for synthesizing a system file, to finish translating the generated assembly to it's respective binary values, run:
 
 `./bin_script.sh` 
 
