@@ -1,0 +1,26 @@
+Go to the installation, for example /usr/local/lib, and do the following commands:
+
+$ cd /usr/local/lib
+$ wget https://www.antlr.org/download/antlr-4.7.1-complete.jar
+
+add the following commands to your ~/.bashrc:
+
+export CLASSPATH=".:/usr/local/lib/antlr-4.7.1-complete.jar:$CLASSPATH"
+alias antlr4='java -jar /usr/local/lib/antlr-4.7.1-complete.jar'
+alias grun='java org.antlr.v4.gui.TestRig'
+
+then, run the command;
+$ source ~/.bashrc
+$ pip install antlr4-python3-runtime 
+
+Now, in the execution directory, run:
+
+$ pipenv --python python3.6 install
+$ antlr4 -Dlanguage=Python3 -visitor -o <folder_name>/gen <grammar_file>.g4
+$ pipenv run python -m <folder_name> --lexer --ast --symbol --file tests/<tile_name>.cminus
+
+
+
+
+
+

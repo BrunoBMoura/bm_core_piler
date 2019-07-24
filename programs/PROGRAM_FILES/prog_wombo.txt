@@ -1,0 +1,38 @@
+#include <SoftwareSerial.h>
+
+// rx = 10(red), tx = 11
+SoftwareSerial fpga_serial(10, 11);
+
+
+int data_1;
+int data_2;
+
+int data = 8;
+
+bool reading_from_fpga = true;
+char buff[] = {' '};
+
+void setup() {
+
+  Serial.begin(9600);
+  fpga_serial.begin(115200);
+}
+
+void loop() {
+  /*
+  if (Serial.available()) {
+    data_1 = Serial.read();
+    delay(500);
+    fpga_serial.write(data_1);
+    delay(500);
+  }*/
+  //while(Serial.available()){}
+  //data = Serial.read();
+  fpga_serial.write(data);
+  delay(50);
+  if(fpga_serial.available() && reading_from_fpga ) {
+    data_2 = fpga_serial.read();
+    Serial.write(data_2);
+    reading_from_fpga = false;
+  }
+}

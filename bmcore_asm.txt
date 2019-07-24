@@ -1,0 +1,66 @@
+    ldi $sp, 0 
+    jmp main 
+main:
+    cmsg 22 
+    in $r1 
+    str $r0, 3, $r1 
+    ldi $r1, 2048 
+    str $r0, 1, $r1 
+    ldi $r1, 0 
+    str $r0, 2, $r1 
+    cmsg 23 
+    in $r1 
+    str $r0, 4, $r1 
+L2:
+    ld $r1, $r0, 4 
+    ldi $r2, 13 
+    sneq $r3, $r1, $r2 
+    beq $r3, $r0, L3 
+    cmsg 24 
+    ld $r1, 0, 4 
+    addi $r27, $r1, 0 
+    send $r27 
+    in $r1 
+    str $r0, 4, $r1 
+    jmp L2 
+L3:
+    cmsg 25 
+    in $r1 
+    str $r0, 3, $r1 
+    ld $r1, $r0, 4 
+    ldi $r2, 3 
+    mult $r1, $r1, $r2 
+    ldi $r3, 39 
+    seq $r4, $r1, $r3 
+    beq $r4, $r0, L5 
+    cmsg 26 
+    in $r1 
+    str $r0, 3, $r1 
+L5:
+    cmsg 27 
+    in $r1 
+    str $r0, 3, $r1 
+    ldi $r1, 0 
+    str $r0, 0, $r1 
+L7:
+    ld $r1, $r0, 0 
+    ld $r3, $r0, 1 
+    slt $r4, $r1, $r3 
+    beq $r4, $r0, L8 
+    ld $r1, $r0, 2 
+    ld $r3, $r0, 0 
+    ld $r5, $r0, 0 
+    ldos $r1, $r3, $r5 
+    ld $r1, $r0, 0 
+    addi $r1, $r1, 1 
+    str $r0, 0, $r1 
+    jmp L7 
+L8:
+    cmsg 28 
+    in $r1 
+    str $r0, 3, $r1 
+    btm 
+    nop 
+    endp 
+    nop 
+    hlt 
